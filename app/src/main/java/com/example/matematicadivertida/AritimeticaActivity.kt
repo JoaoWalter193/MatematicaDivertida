@@ -131,6 +131,7 @@ class AritimeticaActivity : AppCompatActivity() {
             }
             .setCancelable(false)
             .show()
+
     }
 
 
