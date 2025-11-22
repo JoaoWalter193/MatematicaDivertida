@@ -5,42 +5,73 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#F7F7F7"
     tools:context=".MainActivity">
 
-    <Button
+    <TextView
+        android:id="@+id/titulo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Matemática Criativa"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:textColor="#006DFF"
+        android:layout_marginTop="60dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnAritimeticaBasica"
-        android:layout_width="249dp"
-        android:layout_height="74dp"
-        android:layout_marginTop="336dp"
+        android:layout_width="0dp"
+        android:layout_height="90dp"
         android:onClick="irAritimetica"
-        android:text="Aritimética Básica"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:text="Aritmética Básica"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="#FFFFFF"
+        android:background="@drawable/rounded_button_blue"
+        android:elevation="6dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        app:layout_constraintTop_toBottomOf="@+id/titulo"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
-    <Button
-        android:id="@+id/btnMaiorNumero"
-        android:layout_width="249dp"
-        android:layout_height="74dp"
-        android:layout_marginTop="100dp"
-        android:onClick="irMaior"
-        android:text="Maior número"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnAritimeticaBasica"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnContagem"
-        android:layout_width="249dp"
-        android:layout_height="74dp"
-        android:layout_marginTop="156dp"
+        android:layout_width="0dp"
+        android:layout_height="90dp"
         android:onClick="irContagem"
         android:text="Contagem"
-        app:layout_constraintBottom_toTopOf="@+id/btnAritimeticaBasica"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="#FFFFFF"
+        android:background="@drawable/rounded_button_green"
+        android:elevation="6dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintTop_toBottomOf="@+id/btnAritimeticaBasica"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnMaiorNumero"
+        android:layout_width="0dp"
+        android:layout_height="90dp"
+        android:onClick="irMaior"
+        android:text="Maior Número"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="#FFFFFF"
+        android:background="@drawable/rounded_button_pink"
+        android:elevation="6dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintTop_toBottomOf="@+id/btnContagem"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,36 +5,72 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFFF"
     tools:context=".MaiorActivity">
+
+    <TextView
+        android:id="@+id/tituloMaior"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Qual é o maior número?"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:textColor="#000000"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="50dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <ProgressBar
+        android:id="@+id/progresso"
+        style="@android:style/Widget.ProgressBar.Horizontal"
+        android:layout_width="260dp"
+        android:layout_height="18dp"
+        android:progressDrawable="@drawable/progress_bar_style"
+        android:max="5"
+        android:progress="0"
+        app:layout_constraintTop_toBottomOf="@id/tituloMaior"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
     <Button
         android:id="@+id/escolha1"
-        android:layout_width="235dp"
-        android:layout_height="94dp"
-        android:layout_marginTop="116dp"
-        android:text="Button"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="250dp"
+        android:layout_height="90dp"
+        android:background="@drawable/rounded_button_blue"
+        android:text="123"
+        android:textSize="30sp"
+        android:textColor="@android:color/white"
+        android:layout_marginTop="60dp"
+        app:layout_constraintTop_toBottomOf="@id/tituloMaior"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"/>
 
     <Button
         android:id="@+id/escolha2"
-        android:layout_width="235dp"
-        android:layout_height="94dp"
-        android:layout_marginTop="120dp"
-        android:text="Button"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="250dp"
+        android:layout_height="90dp"
+        android:background="@drawable/rounded_button_blue"
+        android:text="321"
+        android:textSize="30sp"
+        android:textColor="@android:color/white"
+        android:layout_marginTop="40dp"
+        app:layout_constraintTop_toBottomOf="@id/escolha1"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/escolha1" />
+        app:layout_constraintEnd_toEndOf="parent"/>
 
     <Button
         android:id="@+id/escolha3"
-        android:layout_width="235dp"
-        android:layout_height="94dp"
-        android:layout_marginTop="120dp"
-        android:text="Button"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="250dp"
+        android:layout_height="90dp"
+        android:background="@drawable/rounded_button_blue"
+        android:text="213"
+        android:textSize="30sp"
+        android:textColor="@android:color/white"
+        android:layout_marginTop="40dp"
+        app:layout_constraintTop_toBottomOf="@id/escolha2"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/escolha2" />
+        app:layout_constraintEnd_toEndOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

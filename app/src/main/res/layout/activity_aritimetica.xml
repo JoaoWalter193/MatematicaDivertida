@@ -1,84 +1,115 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AritimeticaActivity">
+    android:background="#F7F7F7">
 
     <TextView
-        android:id="@+id/num1"
+        android:id="@+id/titleArit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="160dp"
-        android:text="Numero1"
-        android:textAlignment="center"
-        android:textSize="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.106"
+        android:text="Aritmética"
+        android:textColor="#006DFF"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:layout_marginTop="48dp"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"/>
 
-    <TextView
-        android:id="@+id/num2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="160dp"
-        android:text="Numero2"
-        android:textAlignment="center"
-        android:textSize="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.786"
+    <ProgressBar
+        android:id="@+id/progresso"
+        style="@android:style/Widget.ProgressBar.Horizontal"
+        android:layout_width="260dp"
+        android:layout_height="18dp"
+        android:progressDrawable="@drawable/progress_bar_style"
+        android:max="5"
+        android:progress="0"
+        app:layout_constraintTop_toBottomOf="@id/titleArit"
+        android:layout_marginTop="20dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"/>
 
-    <TextView
-        android:id="@+id/op"
+    <LinearLayout
+        android:id="@+id/layoutOperacao"
+        android:orientation="horizontal"
+        android:gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="148dp"
-        android:text="TextView"
-        android:textAlignment="center"
-        android:textSize="30dp"
-        app:layout_constraintEnd_toStartOf="@+id/num2"
-        app:layout_constraintHorizontal_bias="0.492"
-        app:layout_constraintStart_toEndOf="@+id/num1"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginTop="40dp"
+        app:layout_constraintTop_toBottomOf="@+id/titleArit"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:id="@+id/num1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textSize="40sp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/op"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="+"
+            android:textSize="40sp"
+            android:textStyle="bold"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"/>
+
+        <TextView
+            android:id="@+id/num2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textSize="40sp"
+            android:textStyle="bold"/>
+    </LinearLayout>
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/sinalIgual"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="76dp"
         android:text="="
-        android:textAlignment="center"
-        android:textSize="96sp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:textSize="80sp"
+        android:textStyle="bold"
+        android:textColor="#000000"
+        android:layout_marginTop="20dp"
+        app:layout_constraintTop_toBottomOf="@+id/layoutOperacao"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/op" />
+        app:layout_constraintEnd_toEndOf="parent"/>
 
     <EditText
         android:id="@+id/resposta"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="72dp"
-        android:ems="10"
-        android:inputType="number"
+        android:layout_width="200dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/rounded_input"
+        android:padding="10dp"
         android:textAlignment="center"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        android:textSize="22sp"
+        android:inputType="number"
+        app:layout_constraintTop_toBottomOf="@+id/sinalIgual"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+        app:layout_constraintEnd_toEndOf="parent"/>
 
     <Button
         android:id="@+id/btnOk"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="76dp"
+        android:layout_width="200dp"
+        android:layout_height="60dp"
         android:text="OK"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="#FFFFFF"
+        android:background="@drawable/rounded_button_blue"
+        android:elevation="6dp"
+        android:layout_marginTop="40dp"
+        app:layout_constraintTop_toBottomOf="@+id/resposta"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/resposta" />
+        app:layout_constraintEnd_toEndOf="parent"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

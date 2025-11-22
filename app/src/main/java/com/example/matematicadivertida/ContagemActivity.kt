@@ -3,6 +3,7 @@
     import android.os.Bundle
     import android.widget.Button
     import android.widget.ImageView
+    import android.widget.ProgressBar
     import androidx.activity.enableEdgeToEdge
     import androidx.appcompat.app.AlertDialog
     import androidx.appcompat.app.AppCompatActivity
@@ -17,8 +18,7 @@
         private lateinit var escolha3: Button
         private lateinit var img: ImageView
 
-
-
+        private lateinit var progresso: ProgressBar
 
         val imagemQuantidade = mapOf(
             R.drawable.img1 to 1,
@@ -54,6 +54,8 @@
             escolha2 = findViewById(R.id.btnEscolha2)
             escolha3 = findViewById(R.id.btnEscolha3)
             img = findViewById(R.id.imageView3)
+            progresso = findViewById(R.id.progresso)
+            progresso.progress = 0
 
             // gerar as 5 imagens que vamos usar
             listImg = imagemQuantidade.keys.shuffled().take(5)
@@ -70,6 +72,9 @@
                 return
 
             }
+
+            progresso.progress = qntJogos
+
             val imgAtual = listImg[qntJogos]
             img.setImageResource(imgAtual)
 

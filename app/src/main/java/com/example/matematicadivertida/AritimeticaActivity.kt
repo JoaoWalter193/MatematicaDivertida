@@ -3,6 +3,7 @@ package com.example.matematicadivertida
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AlertDialog
@@ -18,7 +19,7 @@ class AritimeticaActivity : AppCompatActivity() {
     private lateinit var opView: TextView
     private lateinit var respView: EditText
     private lateinit var btnOk: Button
-
+    private lateinit var progresso: ProgressBar
 
 
     private var pontuacao: Int = 0
@@ -52,6 +53,8 @@ class AritimeticaActivity : AppCompatActivity() {
         opView = findViewById(R.id.op)
         respView = findViewById(R.id.resposta)
         btnOk = findViewById(R.id.btnOk)
+        progresso = findViewById(R.id.progresso)
+        progresso.progress = 0
 
         gerarNovoCalculo()
 
@@ -66,6 +69,8 @@ class AritimeticaActivity : AppCompatActivity() {
             return
 
         }
+
+        progresso.progress = qntJogos
 
         var equacaoString = gerarEquacao()
         // para não ocorrer a mesma equacao

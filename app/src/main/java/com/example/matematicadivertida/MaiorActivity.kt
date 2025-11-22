@@ -2,6 +2,7 @@ package com.example.matematicadivertida
 
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AlertDialog
@@ -15,6 +16,8 @@ class MaiorActivity : AppCompatActivity() {
     private lateinit var escolha1: Button
     private lateinit var escolha2: Button
     private lateinit var escolha3: Button
+
+    private lateinit var progresso: ProgressBar
 
     private var pontuacao: Int = 0
     private var qntJogos: Int = 0
@@ -35,6 +38,8 @@ class MaiorActivity : AppCompatActivity() {
         escolha1 = findViewById(R.id.escolha1)
         escolha2 = findViewById(R.id.escolha2)
         escolha3 = findViewById(R.id.escolha3)
+        progresso = findViewById(R.id.progresso)
+        progresso.progress = 0
 
         gerarNUmero()
     }
@@ -44,6 +49,8 @@ class MaiorActivity : AppCompatActivity() {
             finalizarJogo()
             return
         }
+
+        progresso.progress = qntJogos
 
         arraySorteado.clear()
         for (i in 1..3) {
