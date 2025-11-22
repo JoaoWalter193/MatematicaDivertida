@@ -12,22 +12,15 @@ import kotlin.random.Random
 
 class MaiorActivity : AppCompatActivity() {
 
-
     private lateinit var escolha1: Button
     private lateinit var escolha2: Button
     private lateinit var escolha3: Button
-    private lateinit var numMostrado: TextView
-
-
-
 
     private var pontuacao: Int = 0
     private var qntJogos: Int = 0
     private var qntAcertos: Int = 0
-
-    private var numSorteado: Int = 0
-
-
+    private var arraySorteado: ArrayList<Int> = ArrayList()
+    private var maiorNumero: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,71 +35,56 @@ class MaiorActivity : AppCompatActivity() {
         escolha1 = findViewById(R.id.escolha1)
         escolha2 = findViewById(R.id.escolha2)
         escolha3 = findViewById(R.id.escolha3)
-        numMostrado = findViewById(R.id.numMostrado)
 
         gerarNUmero()
-
     }
 
-
-
-
-    fun gerarNUmero(){
-
-
-        if( qntJogos >= 5){
-            // logica para encerrar o jogo quando fechar as 5 perguntas
+    fun gerarNUmero() {
+        if (qntJogos >= 5) {
             finalizarJogo()
             return
-
         }
 
-        numSorteado = Random.nextInt(100,1000)
-
-        numMostrado.setText(numSorteado.toString())
-
-        var numRandom = Random.nextInt(0,3)
-
-        when {
-
-            numRandom == 0 -> {
-                escolha1.setText(numSorteado.toString())
-                escolha2.setText(Random.nextInt(100,1000).toString())
-                escolha3.setText(Random.nextInt(100,1000).toString())
-            }
-            numRandom == 1 -> {
-                escolha2.setText(numSorteado.toString())
-                escolha3.setText(Random.nextInt(100,1000).toString())
-                escolha1.setText(Random.nextInt(100,1000).toString())
-
-            }
-            numRandom == 2 ->  {
-                escolha3.setText(numSorteado.toString())
-                escolha2.setText(Random.nextInt(100,1000).toString())
-                escolha1.setText(Random.nextInt(100,1000).toString())
-
-            }
-
+        arraySorteado.clear()
+        for (i in 1..3) {
+            arraySorteado.add(Random.nextInt(0, 10))
         }
 
-        escolha1.setOnClickListener { verificarResposta(escolha1.text.toString().toInt()) }
-        escolha2.setOnClickListener { verificarResposta(escolha2.text.toString().toInt()) }
-        escolha3.setOnClickListener { verificarResposta(escolha3.text.toString().toInt()) }
+        maiorNumero = arraySorteado
+            .sortedDescending()
+            .joinToString("")
+            .toInt()
 
+        val opcoes = ArrayList<String>()
 
+        opcoes.add(maiorNumero.toString())
+
+        repeat(2) {
+            var opcaoErrada: String
+            do {
+                opcaoErrada = arraySorteado.shuffled().joinToString("")
+            } while (opcaoErrada == maiorNumero.toString() || opcoes.contains(opcaoErrada))
+            opcoes.add(opcaoErrada)
+        }
+        opcoes.shuffle()
+
+        escolha1.text = opcoes[0]
+        escolha2.text = opcoes[1]
+        escolha3.text = opcoes[2]
+
+        escolha1.setOnClickListener { verificarResposta(escolha1.text.toString()) }
+        escolha2.setOnClickListener { verificarResposta(escolha2.text.toString()) }
+        escolha3.setOnClickListener { verificarResposta(escolha3.text.toString()) }
     }
 
-
-
-
-    fun verificarResposta(respUser: Int){
+    fun verificarResposta(respUser: String) {
         val msg: String
-        if (respUser == numSorteado){
-            pontuacao+= 20
+        if (respUser.toInt() == maiorNumero) {
+            pontuacao += 20
             qntAcertos++
-            msg = "Voce Acertou!!!"
+            msg = "Você Acertou!!!"
         } else {
-            msg = "Voce Errou!! A resposta correta era: $numSorteado"
+            msg = "Você Errou!! O maior número possível era: $maiorNumero"
         }
 
         AlertDialog.Builder(this)
@@ -114,17 +92,13 @@ class MaiorActivity : AppCompatActivity() {
             .setMessage(msg)
             .setPositiveButton("OK") { _, _ ->
                 qntJogos++
-                numMostrado.setText("")
                 gerarNUmero()
             }
             .setCancelable(false)
             .show()
-
     }
 
-
-    fun finalizarJogo(){
-
+    fun finalizarJogo() {
         AlertDialog.Builder(this)
             .setTitle("Fim do Jogo")
             .setMessage("Você acertou $qntAcertos de 5.\nNota final: $pontuacao")
@@ -133,7 +107,5 @@ class MaiorActivity : AppCompatActivity() {
             }
             .setCancelable(false)
             .show()
-
     }
-
 }
